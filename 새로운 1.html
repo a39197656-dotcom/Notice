@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HRBP 육아휴직 안내문</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #F4F6FB;
+    min-height: 100vh;
+    padding: 2.5rem 1rem;
+    color: #1a1a2e;
+  }
+
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* 헤더 */
+  .hd {
+    background: #3C5BFA;
+    border-radius: 20px;
+    padding: 2.25rem 2.25rem 2rem;
+  }
+  .hd-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.1rem;
+  }
+  .hd-tag {
+    font-size: 11px;
+    color: rgba(255,255,255,.5);
+    letter-spacing: .14em;
+    font-weight: 500;
+  }
+  .hd-badge {
+    background: rgba(255,255,255,.15);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 11px;
+    color: rgba(255,255,255,.85);
+  }
+  .hd h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -.4px;
+    margin-bottom: .4rem;
+  }
+  .hd p {
+    font-size: 13px;
+    color: rgba(255,255,255,.58);
+    line-height: 1.65;
+  }
+  .hd-pills {
+    display: flex;
+    gap: 7px;
+    margin-top: 1.25rem;
+    flex-wrap: wrap;
+  }
+  .hp {
+    background: rgba(255,255,255,.13);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,.88);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hp i { font-size: 13px; }
+
+  /* 2열 그리드 */
+  .grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  /* 공통 카드 */
+  .card, .card-full {
+    background: #fff;
+    border: 1px solid #E8ECF5;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(60,91,250,.06);
+  }
+  .ch {
+    padding: .9rem 1.4rem;
+    border-bottom: 1px solid #EEF1FA;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #FAFBFF;
+  }
+  .ch-l { display: flex; align-items: center; gap: 10px; }
+  .cn {
+    width: 28px; height: 28px;
+    border-radius: 9px;
+    background: #EEF1FF;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 600;
+    color: #3C5BFA;
+    flex-shrink: 0;
+  }
+  .ct { font-size: 14px; font-weight: 600; color: #1a1a2e; }
+  .cbadge {
+    font-size: 10px; border-radius: 20px;
+    padding: 3px 10px; font-weight: 600;
+  }
+  .cb-must { background: #FFF3BF; color: #7a6800; }
+  .cb-blue { background: #EEF1FF; color: #3C5BFA; }
+  .cb { padding: 1.2rem 1.4rem; }
+
+  /* 01 사전숙지 */
+  .notice {
+    background: #EEF1FF;
+    border-radius: 12px;
+    padding: .85rem 1.1rem;
+    display: flex; gap: 10px; align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+  .notice i { font-size: 16px; color: #3C5BFA; margin-top: 1px; flex-shrink: 0; }
+  .nt { font-size: 13px; color: #1a2980; line-height: 1.7; }
+  .nt strong { font-weight: 600; }
+  .lg { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .lk {
+    display: flex; align-items: center; gap: 7px;
+    border: 1px solid #E8ECF5;
+    border-radius: 10px; padding: 8px 11px;
+    font-size: 12px; color: #555e7a;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background .15s, border-color .15s;
+  }
+  .lk:hover { background: #F4F6FB; border-color: #c7cfe8; }
+  .lk i { font-size: 13px; color: #3C5BFA; flex-shrink: 0; }
+
+  /* 02 기간 */
+  .dur-wrap { display: flex; gap: 14px; align-items: flex-start; }
+  .dur-circle-wrap { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+  .dur-circle {
+    width: 90px; height: 90px; border-radius: 50%;
+    background: #EEF1FF;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+  }
+  .dur-big { font-size: 34px; font-weight: 700; color: #3C5BFA; letter-spacing: -2px; line-height: 1; }
+  .dur-unit { font-size: 11px; color: #3C5BFA; opacity: .7; margin-top: 2px; }
+  .dur-sub { font-size: 10.5px; color: #9aa3bf; text-align: center; margin-top: .35rem; line-height: 1.5; }
+  .dur-info { flex: 1; }
+  .dur-txt { font-size: 12.5px; color: #555e7a; line-height: 1.75; margin-bottom: .8rem; }
+  .ext-box { background: #F4F6FB; border-radius: 11px; padding: .8rem 1rem; }
+  .el { font-size: 10px; font-weight: 600; color: #3C5BFA; letter-spacing: .07em; margin-bottom: .5rem; }
+  .er { display: flex; gap: 7px; align-items: flex-start; margin-bottom: 4px; }
+  .edot {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: #3C5BFA; opacity: .45;
+    margin-top: 7px; flex-shrink: 0;
+  }
+  .et { font-size: 11.5px; color: #555e7a; line-height: 1.6; }
+
+  /* 03 신청방법 */
+  .steps4 {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+  }
+  .s4 {
+    padding: 1.1rem 1rem;
+    border-right: 1px solid #EEF1FA;
+    display: flex; flex-direction: column;
+  }
+  .s4:last-child { border-right: none; }
+  .snum { font-size: 10px; font-weight: 600; color: #3C5BFA; letter-spacing: .08em; margin-bottom: .45rem; }
+  .stl { font-size: 13px; font-weight: 600; color: #1a1a2e; margin-bottom: .3rem; }
+  .sd { font-size: 11.5px; color: #7a83a0; line-height: 1.6; flex: 1; }
+  .chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: .4rem; }
+  .chip { font-size: 10.5px; background: #EEF1FF; color: #3C5BFA; border-radius: 6px; padding: 3px 9px; font-weight: 500; }
+  .gbtn {
+    display: inline-flex; align-items: center; gap: 5px;
+    margin-top: .7rem; background: #3C5BFA; color: #fff;
+    border-radius: 10px; padding: 8px 14px;
+    font-size: 12px; font-weight: 600;
+    border: none; cursor: pointer;
+    align-self: flex-start;
+    transition: background .15s;
+    font-family: inherit;
+  }
+  .gbtn:hover { background: #2a47e8; }
+  .gbtn i { font-size: 13px; }
+  .step-hint {
+    font-size: 11px; color: #9aa3bf;
+    padding: .7rem 1.4rem;
+    border-top: 1px solid #EEF1FA;
+    background: #FAFBFF;
+  }
+
+  /* 04 참고사항 */
+  .ref-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .rcard {
+    background: #F4F6FB;
+    border-radius: 13px; padding: .9rem 1rem;
+    display: flex; gap: 11px; align-items: flex-start;
+  }
+  .ricon {
+    width: 34px; height: 34px; border-radius: 11px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+  .ri1 { background: #DBEAFE; color: #1D4ED8; }
+  .ri2 { background: #FCE7F3; color: #9D174D; }
+  .ri3 { background: #D1FAE5; color: #065F46; }
+  .ri4 { background: #FEF3C7; color: #92400E; }
+  .rtxt .rt { font-size: 12.5px; font-weight: 600; color: #1a1a2e; margin-bottom: .2rem; }
+  .rtxt .rd { font-size: 11.5px; color: #7a83a0; line-height: 1.5; }
+  .mark { background: #FFF3BF; padding: 1px 5px; border-radius: 4px; color: #7a6800; }
+  .pc-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: .9rem;
+    border: 1px solid #E8ECF5; border-radius: 10px;
+    padding: 8px 15px; font-size: 12px; color: #555e7a;
+    cursor: pointer; background: #fff;
+    font-family: inherit;
+    transition: background .15s;
+  }
+  .pc-btn:hover { background: #F4F6FB; }
+  .pc-btn i { font-size: 13px; color: #3C5BFA; }
+
+  /* 푸터 */
+  .ft {
+    background: #fff;
+    border: 1px solid #E8ECF5;
+    border-radius: 16px;
+    padding: 1.1rem 1.4rem;
+    display: flex; gap: 11px; align-items: flex-start;
+    box-shadow: 0 2px 12px rgba(60,91,250,.06);
+  }
+  .ft i { color: #3C5BFA; font-size: 16px; margin-top: 2px; flex-shrink: 0; }
+  .ftl { font-size: 10px; color: #9aa3bf; letter-spacing: .07em; margin-bottom: .25rem; font-weight: 500; }
+  .ftv { font-size: 12.5px; color: #555e7a; line-height: 1.7; }
+
+  /* 반응형 */
+  @media (max-width: 540px) {
+    .grid2 { grid-template-columns: 1fr; }
+    .steps4 { grid-template-columns: 1fr 1fr; }
+    .s4 { border-right: none; border-bottom: 1px solid #EEF1FA; }
+    .s4:nth-child(odd) { border-right: 1px solid #EEF1FA; }
+    .s4:last-child, .s4:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+    .ref-grid { grid-template-columns: 1fr; }
+    .hd h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 헤더 -->
+  <div class="hd">
+    <div class="hd-top">
+      <span class="hd-tag">HRBP</span>
+      <span class="hd-badge">신청 전 필독</span>
+    </div>
+    <h1>육아휴직 안내문</h1>
+    <p>신청 전 아래 내용을 확인하고 절차에 따라 진행해 주세요.</p>
+    <div class="hd-pills">
+      <span class="hp"><i class="ti ti-user-check"></i>만 12세 이하 자녀 양육</span>
+      <span class="hp"><i class="ti ti-calendar"></i>최대 2년 사용</span>
+      <span class="hp"><i class="ti ti-list-numbers"></i>4단계 신청</span>
+    </div>
+  </div>
+
+  <!-- 01 + 02 -->
+  <div class="grid2">
+
+    <div class="card">
+      <div class="ch">
+        <div class="ch-l"><div class="cn">01</div><span class="ct">제도 사전 숙지</span></div>
+        <span class="cbadge cb-must">필수</span>
+      </div>
+      <div class="cb">
+        <div class="notice">
+          <i class="ti ti-info-circle"></i>
+          <div class="nt">HR규정/Knox 챗봇 <strong>'모야'</strong>를 활용하여 문의하고, 육아휴직 안내 동영상을 시청하세요.</div>
+        </div>
+        <div class="lg">
+          <a href="#" class="lk"><i class="ti ti-file-description"></i>육아휴직 기준 안내</a>
+          <a href="#" class="lk"><i class="ti ti-player-play"></i>영상 시청 바로가기</a>
+          <a href="#" class="lk"><i class="ti ti-refresh"></i>휴/복직 프로세스</a>
+          <a href="#" class="lk"><i class="ti ti-list-check"></i>휴/복직 기준 안내</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ch">
+        <div class="ch-l"><div class="cn">02</div><span class="ct">기준 및 사용기간</span></div>
+      </div>
+      <div class="cb">
+        <div class="dur-wrap">
+          <div class="dur-circle-wrap">
+            <div class="dur-circle">
+              <div class="dur-big">2</div>
+              <div class="dur-unit">년</div>
+            </div>
+            <div class="dur-sub">최대<br>(연장 2년 6개월)</div>
+          </div>
+          <div class="dur-info">
+            <div class="dur-txt">임신 중 여성 임직원 모성보호, 만 12세(또는 초등학교 6학년) 이하 자녀 양육 필요시 신청</div>
+            <div class="ext-box">
+              <div class="el">연장 대상</div>
+              <div class="er"><div class="edot"></div><div class="et">한부모 가정, 중증 장애아동</div></div>
+              <div class="er"><div class="edot"></div><div class="et">양부모 모두 3개월 이상 사용 시, 8세(초2) 이하 6개월 추가</div></div>
+              <div class="er"><div class="edot" style="opacity:.2;"></div><div class="et" style="color:#9aa3bf;">추가 증빙서류 별도 문의</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 03 신청방법 -->
+  <div class="card-full">
+    <div class="ch">
+      <div class="ch-l"><div class="cn">03</div><span class="ct">휴직 신청 방법</span></div>
+      <span class="cbadge cb-blue">4단계</span>
+    </div>
+    <div class="steps4">
+      <div class="s4">
+        <div class="snum">STEP 1</div>
+        <div class="stl">서류 준비</div>
+        <div class="chips"><span class="chip">① 휴직원</span><span class="chip">② 증빙서류</span></div>
+      </div>
+      <div class="s4">
+        <div class="snum">STEP 2</div>
+        <div class="stl">부서장 보고</div>
+        <div class="sd">휴/복직 계획 및 인수인계</div>
+      </div>
+      <div class="s4">
+        <div class="snum">STEP 3</div>
+        <div class="stl">메일 송부</div>
+        <div class="sd">HRBP 서류작성 후 스캔본 전달</div>
+      </div>
+      <div class="s4">
+        <div class="snum">STEP 4</div>
+        <div class="stl">휴직신청</div>
+        <div class="sd">GWRP(W) 결재상신</div>
+        <button class="gbtn"><i class="ti ti-arrow-right"></i>신청 바로가기</button>
+      </div>
+    </div>
+    <div class="step-hint">* 이상유무 확인  ·  * 원본 HRBP 제출</div>
+  </div>
+
+  <!-- 04 참고사항 -->
+  <div class="card-full">
+    <div class="ch">
+      <div class="ch-l"><div class="cn">04</div><span class="ct">참고사항</span></div>
+    </div>
+    <div class="cb">
+      <div class="ref-grid">
+        <div class="rcard">
+          <div class="ricon ri1"><i class="ti ti-file-text"></i></div>
+          <div class="rtxt">
+            <div class="rt">휴직원</div>
+            <div class="rd">첨부의 휴직원 작성 Guide 참고</div>
+          </div>
+        </div>
+        <div class="rcard">
+          <div class="ricon ri2"><i class="ti ti-id"></i></div>
+          <div class="rtxt">
+            <div class="rt">증빙서류</div>
+            <div class="rd">자녀 등재 <span class="mark">가족관계증명서</span></div>
+          </div>
+        </div>
+        <div class="rcard">
+          <div class="ricon ri3"><i class="ti ti-mail"></i></div>
+          <div class="rtxt">
+            <div class="rt">HRBP 스캔본 송부</div>
+            <div class="rd">휴직원, 서류 이상유무 확인</div>
+          </div>
+        </div>
+        <div class="rcard">
+          <div class="ricon ri4"><i class="ti ti-device-desktop"></i></div>
+          <div class="rtxt">
+            <div class="rt">PC 보관 · 개인연금</div>
+            <div class="rd">첨부 안내문 참고 후 별도 신청</div>
+          </div>
+        </div>
+      </div>
+      <button class="pc-btn"><i class="ti ti-arrow-right"></i>PC 보관함 신청하기</button>
+    </div>
+  </div>
+
+  <!-- 푸터 -->
+  <div class="ft">
+    <i class="ti ti-map-pin"></i>
+    <div>
+      <div class="ftl">서류 원본 제출처</div>
+      <div class="ftv">수원 : R5 A타워 27층 A-16 문서함 / R3 21층 문서함<br>우면 : A타워 5층 HRBP석 문서함</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
